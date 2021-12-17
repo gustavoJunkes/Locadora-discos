@@ -1,0 +1,4 @@
+com\godev\locadoradiscos\LocadoraDiscosApplication.class
+com\godev\locadoradiscos\modelo\Locacao.class
+com\godev\locadoradiscos\modelo\Cliente.class
+com\godev\locadoradiscos\modelo\Disco.class
