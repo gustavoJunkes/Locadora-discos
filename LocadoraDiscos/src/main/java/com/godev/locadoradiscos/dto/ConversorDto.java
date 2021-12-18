@@ -2,7 +2,9 @@ package com.godev.locadoradiscos.dto;
 
 import com.godev.locadoradiscos.modelo.Cliente;
 import com.godev.locadoradiscos.modelo.Disco;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ConversorDto {
 
 	public ClienteDto toClienteDto(Cliente cliente) {

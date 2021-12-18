@@ -18,7 +18,7 @@ public class Locacao {
 	private Long id;
 
 	@OneToMany
-	private Cliente cliente;
+	private List<Cliente> clientes;
 
 	@ManyToMany
 	private List<Disco> discos;
@@ -37,12 +37,12 @@ public class Locacao {
 		this.id = id;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public List<Cliente> getClientes() {
+		return clientes;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 
 	public Date getDataLocacao() {

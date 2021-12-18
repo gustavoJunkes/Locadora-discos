@@ -20,6 +20,7 @@ public class DiscoController {
     private DiscoService discoService;
 
 //    juntar métodos em um só
+
     @GetMapping(value = "/all")
     public ResponseEntity<List<DiscoDto>> all(){
         return new ResponseEntity<>(discoService.getAll(), HttpStatus.OK);
@@ -27,7 +28,7 @@ public class DiscoController {
 
     //tratar exceptions no controller usando exception handler
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<DiscoDto> getById(@Param("id") Long id)  {
 
         DiscoDto disco = new DiscoDto();
@@ -51,6 +52,7 @@ public class DiscoController {
         }
     }
 
+    @PostMapping
     public ResponseEntity<DiscoDto> save(@RequestBody DiscoDto discoDto){
         return new ResponseEntity<> (discoService.save(discoDto), HttpStatus.OK);
     }

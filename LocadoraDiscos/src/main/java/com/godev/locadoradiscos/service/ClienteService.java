@@ -33,7 +33,7 @@ public class ClienteService {
 		return conversorDto.toClienteDto(cliente);
 	}
 
-	public List<ClienteDto> all(){
+	public List<ClienteDto> getAll(){
 		List<Cliente> clientes = repository.findAll();
 		List<ClienteDto> clientesDto = new ArrayList<>();
 
