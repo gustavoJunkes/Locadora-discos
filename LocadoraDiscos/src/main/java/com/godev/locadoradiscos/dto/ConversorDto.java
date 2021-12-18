@@ -2,6 +2,7 @@ package com.godev.locadoradiscos.dto;
 
 import com.godev.locadoradiscos.modelo.Cliente;
 import com.godev.locadoradiscos.modelo.Disco;
+import com.godev.locadoradiscos.modelo.Locacao;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -49,6 +50,30 @@ public class ConversorDto {
 		disco.setAutor(dto.autor);
 
 		return disco;
+	}
+
+	public LocacaoDto toLocacaoDto(Locacao locacao){
+		LocacaoDto locacaoDto = new LocacaoDto();
+		locacaoDto.dataLocacao = locacao.getDataLocacao();
+		locacaoDto.dataDevolucao = locacao.getDataDevolucao();
+		locacaoDto.discos = locacao.getDiscos();
+		locacaoDto.clientes = locacao.getClientes();
+		locacaoDto.preco = locacao.getPreco();
+		locacaoDto.id = locacao.getId();
+
+		return locacaoDto;
+	}
+
+	public Locacao toLocacaoEntity(LocacaoDto locacaoDto){
+		Locacao locacao = new Locacao();
+		locacao.setDataLocacao(locacaoDto.dataLocacao);
+		locacao.setDataDevolucao(locacaoDto.dataDevolucao);
+		locacao.setClientes(locacaoDto.clientes);
+		locacao.setDiscos(locacaoDto.discos);
+		locacao.setPreco(locacaoDto.preco);
+		locacao.setId(locacaoDto.id);
+
+		return locacao;
 	}
 
 }
