@@ -30,7 +30,7 @@ public class ClienteController {
 
     //tratar exceptions no controller usando exception handler
 
-	@GetMapping
+    @GetMapping
     public ResponseEntity<ClienteDto> getById(@Param("id") Long id)  {
 
         ClienteDto cliente = new ClienteDto();
@@ -43,6 +43,7 @@ public class ClienteController {
        }finally {
            return new ResponseEntity<> (cliente, HttpStatus.OK);
        }
+
     }
     @DeleteMapping
     public void delete(@Param("id") Long id){
@@ -63,5 +64,7 @@ public class ClienteController {
     	ClienteDto cliente = new ClienteDto();
     	return new ResponseEntity<ClienteDto>(cliente, HttpStatus.ACCEPTED);
     }
+
+    //adicionar método update.
 
 }
