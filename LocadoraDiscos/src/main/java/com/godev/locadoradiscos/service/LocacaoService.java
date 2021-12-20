@@ -56,7 +56,7 @@ public class LocacaoService {
 
 	public List<LocacaoDto> buscarLocacoesCliente(Long id) {
 		Optional<Cliente> cliente = clienteRepository.findById(id);
-		List<Locacao> locacoes = locacaoRepository.buscarLocacoesCliente(cliente);
+		List<Locacao> locacoes = locacaoRepository.buscarLocacoesCliente(cliente.get());
 		List<LocacaoDto> locacoesDto = new ArrayList();
 
 		for (int i = 0; i < locacoes.size(); i++) {

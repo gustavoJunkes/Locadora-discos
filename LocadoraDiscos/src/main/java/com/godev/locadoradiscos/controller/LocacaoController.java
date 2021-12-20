@@ -49,7 +49,7 @@ public class LocacaoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<LocacaoDto> buscarPorId(@Param("id") Long id) {
+	public ResponseEntity<LocacaoDto> buscarPorId(@Param("id") Long id) throws LocacaoNotFoundException {
 		return new ResponseEntity<>(locacaoService.buscarPorId(id), HttpStatus.OK);
 	}
 }
