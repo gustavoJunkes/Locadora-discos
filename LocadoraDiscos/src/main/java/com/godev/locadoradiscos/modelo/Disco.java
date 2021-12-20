@@ -4,22 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Disco {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotNull
 	private String titulo;
-	
+	@NotNull
 	private String autor;
 
 	private float duracao;
-	
+
 	private String descricao;
-	
+
 	private String categoria;
 
 	public Long getId() {
@@ -69,5 +71,5 @@ public class Disco {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	
+
 }

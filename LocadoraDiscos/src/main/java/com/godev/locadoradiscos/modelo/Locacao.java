@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Locacao {
@@ -17,12 +18,14 @@ public class Locacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
 	@OneToMany
 	private List<Cliente> clientes;
 
 	@ManyToMany
 	private List<Disco> discos;
 
+	@NotNull
 	private Date dataLocacao;
 
 	private Date dataDevolucao;
