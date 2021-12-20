@@ -1,6 +1,7 @@
 package com.godev.locadoradiscos.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import com.godev.locadoradiscos.modelo.Cliente;
 import com.godev.locadoradiscos.modelo.Disco;
@@ -8,11 +9,10 @@ import com.godev.locadoradiscos.modelo.Disco;
 public class LocacaoDto {
 
 	public Long id;
-
-	public String categoria;
-	public Disco disco;
-	public Cliente cliente;
+	//deveria guardar o objeto ou o id do mesmo?
+	public List<Disco> discos;
+	public List<Cliente> clientes;
 	public Date dataLocacao;
 	public Date dataDevolucao;
-	public float preco;
+	public Double preco;
 }
