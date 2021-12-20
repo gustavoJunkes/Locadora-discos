@@ -1,38 +1,79 @@
 package com.godev.locadoradiscos.service;
 
-import com.godev.locadoradiscos.dto.ConversorDto;
-import com.godev.locadoradiscos.dto.LocacaoDto;
-import com.godev.locadoradiscos.modelo.Locacao;
-import com.godev.locadoradiscos.repository.LocacaoRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.godev.locadoradiscos.dto.ConversorDto;
+import com.godev.locadoradiscos.dto.LocacaoDto;
+import com.godev.locadoradiscos.exception.LocacaoNotFoundException;
+import com.godev.locadoradiscos.modelo.Cliente;
+import com.godev.locadoradiscos.modelo.Locacao;
+import com.godev.locadoradiscos.repository.ClienteRepository;
+import com.godev.locadoradiscos.repository.LocacaoRepository;
 
 @Service
 public class LocacaoService {
 
-    @Autowired
-    private LocacaoRepository locacaoRepository;
+	@Autowired
+	private LocacaoRepository locacaoRepository;
 
-    @Autowired
-    private ConversorDto conversorDto;
+	@Autowired
+	private ClienteRepository clienteRepository;
 
-    public LocacaoDto save(LocacaoDto locacaoDto){
-        Locacao locacao = new Locacao();
-        locacao = locacaoRepository.save(conversorDto.toLocacaoEntity(locacaoDto));
-        return conversorDto.toLocacaoDto(locacao);
-    }
+	@Autowired
+	private ConversorDto conversorDto;
 
-    public List<LocacaoDto> getAll(){
-        List<Locacao> locacoes = locacaoRepository.findAll();
-        List<LocacaoDto> locacaoesDto = new ArrayList<>();
+	public LocacaoDto save(LocacaoDto locacaoDto) {
+		Locacao locacao = new Locacao();
+		locacao = locacaoRepository.save(conversorDto.toLocacaoEntity(locacaoDto));
+		return conversorDto.toLocacaoDto(locacao);
+	}
 
-        for (int i = 0; i < locacoes.size(); i++){
-            locacaoesDto.add(conversorDto.toLocacaoDto(locacoes.get(i)));
-        }
-        return locacaoesDto;
-    }
+	public List<LocacaoDto> getAll() {
+		List<Locacao> locacoes = locacaoRepository.findAll();
+		List<LocacaoDto> locacaoesDto = new ArrayList<>();
+
+		for (int i = 0; i < locacoes.size(); i++) {
+			locacaoesDto.add(conversorDto.toLocacaoDto(locacoes.get(i)));
+		}
+		return locacaoesDto;
+	}
+
+	public void delete(Long id) throws LocacaoNotFoundException {
+
+		final Optional<Locacao> locacaoOptional = locacaoRepository.findById(id);
+
+		if (locacaoOptional.isPresent()) {
+			locacaoRepository.delete(locacaoOptional.get());
+		}
+
+		throw new LocacaoNotFoundException();
+	}
+
+	public List<LocacaoDto> buscarLocacoesCliente(Long id) {
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+		List<Locacao> locacoes = locacaoRepository.buscarLocacoesCliente(cliente.get());
+		List<LocacaoDto> locacoesDto = new ArrayList();
+
+		for (int i = 0; i < locacoes.size(); i++) {
+			locacoesDto.add(conversorDto.toLocacaoDto(locacoes.get(i)));
+		}
+
+		return locacoesDto;
+	}
+
+	public LocacaoDto buscarPorId(Long id) throws LocacaoNotFoundException {
+		Optional<Locacao> locacao = locacaoRepository.findById(id);
+
+		if (locacao.isPresent()) {
+			return conversorDto.toLocacaoDto(locacao.get());
+		} else {
+			throw new LocacaoNotFoundException();
+		}
+	}
 
 }
