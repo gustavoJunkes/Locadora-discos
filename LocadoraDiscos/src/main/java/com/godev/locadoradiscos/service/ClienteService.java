@@ -63,6 +63,14 @@ public class ClienteService {
 	public void alterar(){
 
 	}
-
-
+	
+	public List<ClienteDto> buscarNomeCliente(String nome){
+		List<Cliente> clientes = repository.findByName(nome);
+		List<ClienteDto> clientesDto = new ArrayList<>();
+		
+		for (int i = 0; i < clientes.size(); i++) {
+			clientesDto.add(conversorDto.toClienteDto(clientes.get(i)));
+		}
+		return clientesDto;
+	}
 }

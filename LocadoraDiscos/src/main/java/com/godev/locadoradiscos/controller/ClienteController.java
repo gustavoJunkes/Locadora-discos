@@ -57,5 +57,11 @@ public class ClienteController {
     public ResponseEntity<ClienteDto> save(@RequestBody ClienteDto clienteDto){
         return new ResponseEntity<> (clienteService.save(clienteDto), HttpStatus.OK);
     }
+    
+    @GetMapping
+    public ResponseEntity<ClienteDto> buscarClientePorNome(@Param("nome") String nome){
+    	ClienteDto cliente = new ClienteDto();
+    	return new ResponseEntity<ClienteDto>(cliente, HttpStatus.ACCEPTED);
+    }
 
 }
