@@ -1,8 +1,8 @@
 package com.godev.locadoradiscos.controller;
 
+import com.godev.locadClienteNotFoundExceptionoradiscos.exception.DiscoNotFoundException;
 
 import com.godev.locadoradiscos.dto.DiscoDto;
-import com.godev.locadoradiscos.exception.DiscoNotFoundException;
 import com.godev.locadoradiscos.service.DiscoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

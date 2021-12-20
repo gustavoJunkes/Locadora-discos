@@ -1,5 +1,6 @@
 package com.godev.locadoradiscos.controller;
 
+import com.godev.locadClienteNotFoundExceptionoradiscos.exception.DiscoNotFoundException;
 import com.godev.locadoradiscos.dto.ClienteDto;
 import com.godev.locadoradiscos.dto.DiscoDto;
 import com.godev.locadoradiscos.exception.ClienteNotFoundException;
@@ -30,7 +31,7 @@ public class ClienteController {
 
     //tratar exceptions no controller usando exception handler
 
-	@GetMapping
+    @GetMapping
     public ResponseEntity<ClienteDto> getById(@Param("id") Long id)  {
 
         ClienteDto cliente = new ClienteDto();
@@ -43,6 +44,7 @@ public class ClienteController {
        }finally {
            return new ResponseEntity<> (cliente, HttpStatus.OK);
        }
+
     }
     @DeleteMapping
     public void delete(@Param("id") Long id){
@@ -57,5 +59,7 @@ public class ClienteController {
     public ResponseEntity<ClienteDto> save(@RequestBody ClienteDto clienteDto){
         return new ResponseEntity<> (clienteService.save(clienteDto), HttpStatus.OK);
     }
+
+    //adicionar método update.
 
 }
