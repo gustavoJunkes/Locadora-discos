@@ -2,13 +2,18 @@ package com.godev.locadoradiscos.service;
 
 import com.godev.locadoradiscos.dto.ConversorDto;
 import com.godev.locadoradiscos.dto.LocacaoDto;
+import com.godev.locadoradiscos.exception.LocacaoNotFoundException;
+import com.godev.locadoradiscos.modelo.Cliente;
 import com.godev.locadoradiscos.modelo.Locacao;
 import com.godev.locadoradiscos.repository.LocacaoRepository;
+
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LocacaoService {
@@ -34,5 +39,18 @@ public class LocacaoService {
         }
         return locacaoesDto;
     }
+    
+    public void delete(Long id) throws LocacaoNotFoundException{
+
+    	final Optional<Locacao> locacaoOptional = locacaoRepository.findById(id);
+    	
+    	if(locacaoOptional.isPresent()) {
+    		locacaoRepository.delete(locacaoOptional.get());
+    	}
+    	
+    	throw new LocacaoNotFoundException();
+    }
+    
+    
 
 }
