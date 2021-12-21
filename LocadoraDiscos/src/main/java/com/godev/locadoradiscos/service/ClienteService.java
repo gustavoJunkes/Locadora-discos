@@ -76,7 +76,18 @@ public class ClienteService {
 		for (int i = 0; i < clientes.size(); i++) {
 			clientesDto.add(conversorDto.toClienteDto(clientes.get(i)));
 		}
-		return clientesDto;
+
+		return clientesDto;	
+	}
+	
+	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException{
+		Optional<Cliente> cliente = repository.findByCpf(cpf);
+		
+		if(cliente.isPresent()) {
+			return conversorDto.toClienteDto(cliente.get());
+		}
+		else throw new ClienteNotFoundException();
+
 	}
 //
 //	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException {
