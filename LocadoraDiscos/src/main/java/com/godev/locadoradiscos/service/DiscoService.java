@@ -41,7 +41,7 @@ public class DiscoService {
 		return discosDto;
 	}
 
-	public void delete(Long id) throws DiscoNotFoundException{
+	public void delete(Long id) {
 		Optional<Disco> discoOptional = repository.findById(id);
 
 		if (discoOptional.isPresent()) {
@@ -50,15 +50,14 @@ public class DiscoService {
 		throw new DiscoNotFoundException();
 	}
 
-	public DiscoDto getById(Long id) throws DiscoNotFoundException{
+	public DiscoDto getById(Long id) {
 		Optional<Disco> disco = repository.findById(id);
 
-		if(disco.isPresent()){
+		if (disco.isPresent()) {
 			return conversorDto.toDiscoDto(disco.get());
-		}else throw new DiscoNotFoundException();
+		} else {
+			throw new DiscoNotFoundException();
+		}
 	}
-	
-	
-
 
 }

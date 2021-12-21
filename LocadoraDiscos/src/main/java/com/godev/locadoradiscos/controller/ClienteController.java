@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.godev.locadoradiscos.dto.ClienteDto;
-import com.godev.locadoradiscos.exception.ClienteNotFoundException;
 import com.godev.locadoradiscos.service.ClienteService;
 
 @RestController
@@ -32,14 +31,10 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 
-//    juntar métodos em um só
-
 	@GetMapping(value = "/all")
 	public ResponseEntity<List<ClienteDto>> all() {
 		return new ResponseEntity<>(clienteService.getAll(), HttpStatus.OK);
 	}
-
-	// tratar exceptions no controller usando exception handler
 
 	@GetMapping
 	public ResponseEntity<ClienteDto> getById(@Param("id") Long id) {
@@ -51,11 +46,7 @@ public class ClienteController {
 
 	@DeleteMapping
 	public void delete(@Param("id") Long id) {
-		try {
-			clienteService.delete(id);
-		} catch (ClienteNotFoundException ex) {
-			ex.getMessage();
-		}
+		clienteService.delete(id);
 	}
 
 	@PostMapping

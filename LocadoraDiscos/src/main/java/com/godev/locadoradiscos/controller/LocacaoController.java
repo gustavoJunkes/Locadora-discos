@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.godev.locadoradiscos.dto.LocacaoDto;
-import com.godev.locadoradiscos.exception.LocacaoNotFoundException;
 import com.godev.locadoradiscos.service.LocacaoService;
 
 @RestController
@@ -36,11 +35,7 @@ public class LocacaoController {
 
 	@DeleteMapping
 	public void delete(@Param("id") Long id) {
-		try {
-			locacaoService.delete(id);
-		} catch (LocacaoNotFoundException ex) {
-			ex.getMessage();
-		}
+		locacaoService.delete(id);
 	}
 
 	@GetMapping(value = "/cliente")
@@ -49,7 +44,7 @@ public class LocacaoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<LocacaoDto> buscarPorId(@Param("id") Long id) throws LocacaoNotFoundException {
+	public ResponseEntity<LocacaoDto> buscarPorId(@Param("id") Long id) {
 		return new ResponseEntity<>(locacaoService.buscarPorId(id), HttpStatus.OK);
 	}
 }

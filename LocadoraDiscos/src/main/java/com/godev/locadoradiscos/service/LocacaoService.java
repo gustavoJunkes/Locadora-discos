@@ -43,7 +43,7 @@ public class LocacaoService {
 		return locacaoesDto;
 	}
 
-	public void delete(Long id) throws LocacaoNotFoundException {
+	public void delete(Long id) {
 
 		final Optional<Locacao> locacaoOptional = locacaoRepository.findById(id);
 
@@ -66,7 +66,7 @@ public class LocacaoService {
 		return locacoesDto;
 	}
 
-	public LocacaoDto buscarPorId(Long id) throws LocacaoNotFoundException {
+	public LocacaoDto buscarPorId(Long id) {
 		Optional<Locacao> locacao = locacaoRepository.findById(id);
 
 		if (locacao.isPresent()) {

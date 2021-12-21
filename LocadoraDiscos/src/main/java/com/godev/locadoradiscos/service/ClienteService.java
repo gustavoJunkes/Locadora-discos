@@ -43,11 +43,12 @@ public class ClienteService {
 		return clientesDto;
 	}
 
-	public void delete(Long id) throws ClienteNotFoundException {
+	public void delete(Long id) {
 		final Optional<Cliente> cliente = repository.findById(id);
 
 		if (cliente.isPresent()) {
 			repository.delete(cliente.get());
+
 		} else {
 			throw new ClienteNotFoundException();
 		}
@@ -77,26 +78,17 @@ public class ClienteService {
 			clientesDto.add(conversorDto.toClienteDto(clientes.get(i)));
 		}
 
-		return clientesDto;	
+		return clientesDto;
 	}
-	
-	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException{
+
+	public ClienteDto getByCpf(String cpf) {
 		Optional<Cliente> cliente = repository.findByCpf(cpf);
-		
-		if(cliente.isPresent()) {
+
+		if (cliente.isPresent()) {
 			return conversorDto.toClienteDto(cliente.get());
+		} else {
+			throw new ClienteNotFoundException();
 		}
-		else throw new ClienteNotFoundException();
 
 	}
-//
-//	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException {
-//		Optional<Cliente> cliente = repository.findByCpf(cpf);
-//
-//		if (cliente.isPresent()) {
-//			return conversorDto.toClienteDto(cliente.get());
-//		} else {
-//			throw new ClienteNotFoundException();
-//		}
-//	}
 }
