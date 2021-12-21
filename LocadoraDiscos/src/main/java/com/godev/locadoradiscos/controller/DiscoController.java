@@ -57,8 +57,8 @@ public class DiscoController {
         return new ResponseEntity<> (discoService.save(discoDto),HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<DiscoDto> buscarDiscoPeloTitulo(@Param("titulo") String titulo){
+    @GetMapping(value = "/titulo")
+    public ResponseEntity<DiscoDto> buscarDiscoPeloTitulo(@RequestParam("titulo") String titulo){
     	DiscoDto disco = new DiscoDto();
     	return new ResponseEntity<DiscoDto>(disco, HttpStatus.OK);
     }

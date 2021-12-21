@@ -59,8 +59,9 @@ public class ClienteService {
 		if (cliente.isPresent()) {
 			return conversorDto.toClienteDto(cliente.get());
 		} else {
-			throw new ClienteNotFoundException();
+			return new ClienteDto();
 		}
+		
 	}
 
 	public ClienteDto update(ClienteDto clienteDto) {
@@ -89,7 +90,7 @@ public class ClienteService {
 		else throw new ClienteNotFoundException();
 
 	}
-//
+
 //	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException {
 //		Optional<Cliente> cliente = repository.findByCpf(cpf);
 //
