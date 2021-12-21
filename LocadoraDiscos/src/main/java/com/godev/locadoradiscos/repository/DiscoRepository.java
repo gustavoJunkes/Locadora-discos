@@ -1,5 +1,6 @@
 package com.godev.locadoradiscos.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -16,8 +17,8 @@ public interface DiscoRepository extends JpaRepository<Disco, Long> {
 	Optional<Disco> findById (Long id);
 
 	@Transactional
-	Disco findByTitulo (String titulo);
+	List<Disco> findByTitulo (String titulo);
 
 	@Transactional
-	Disco findByAutor (String autor);
+	Optional<Disco> findByAutor (String autor);
 }

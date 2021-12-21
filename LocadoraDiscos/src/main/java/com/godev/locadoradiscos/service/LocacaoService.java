@@ -1,9 +1,11 @@
 package com.godev.locadoradiscos.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,5 +77,19 @@ public class LocacaoService {
 			throw new LocacaoNotFoundException();
 		}
 	}
-
+	
+	public List<LocacaoDto> buscarDataLocacao(Date dataLocacao){
+		List<Locacao> locacoes = locacaoRepository.findByDataLocacao(dataLocacao);
+		List<LocacaoDto> locacoesDto = new ArrayList<LocacaoDto>();
+		
+		for (int i = 0; i < locacoes.size(); i++) {
+			locacoesDto.add(conversorDto.toLocacaoDto(locacoes.get(i)));
+		}
+		return locacoesDto;
+	}
+	
+	public Double maiorPrecoLocacao(){
+		Double precoMaior = locacaoRepository.maiorPrecoLocacao();
+		return precoMaior;
+	}
 }

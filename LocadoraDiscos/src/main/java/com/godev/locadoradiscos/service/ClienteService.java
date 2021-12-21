@@ -91,13 +91,4 @@ public class ClienteService {
 
 	}
 
-//	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException {
-//		Optional<Cliente> cliente = repository.findByCpf(cpf);
-//
-//		if (cliente.isPresent()) {
-//			return conversorDto.toClienteDto(cliente.get());
-//		} else {
-//			throw new ClienteNotFoundException();
-//		}
-//	}
 }

@@ -1,6 +1,7 @@
 package com.godev.locadoradiscos.repository;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -19,11 +20,12 @@ public interface LocacaoRepository extends JpaRepository<Locacao, Long>, Locacao
 	Optional<Locacao> findById (Long id);
 
 	@Transactional
-	Locacao findByDataLocacao (Date dataLocacao);
+	List<Locacao> findByDataLocacao (Date dataLocacao);
 
 	@Query ("SELECT max(locacao.preco) from Locacao locacao")
-	Double maiorPrecoDisco();
+	Double maiorPrecoLocacao();
 
 	@Query("SELECT min(locacao.preco) from Locacao locacao")
-	Double menorPrecoDisco();
+	Double menorPrecoLocacao();
+
 }

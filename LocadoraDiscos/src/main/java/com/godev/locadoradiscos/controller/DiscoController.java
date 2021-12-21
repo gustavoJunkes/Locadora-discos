@@ -63,6 +63,19 @@ public class DiscoController {
     	return new ResponseEntity<DiscoDto>(disco, HttpStatus.OK);
     }
     
+    @GetMapping(value = "/autor")
+    public ResponseEntity<DiscoDto> getByAutor(@RequestParam("autor") String autor){
+    	DiscoDto discoDto = new DiscoDto();
+    	
+    	try {
+    		discoDto = discoService.getByAutor(autor);
+    	}catch (DiscoNotFoundException exc) {
+			exc.getMessage();
+		}finally {
+			return new ResponseEntity<>(discoDto, HttpStatus.OK);
+		}
+    }
+    
     
     
 }
