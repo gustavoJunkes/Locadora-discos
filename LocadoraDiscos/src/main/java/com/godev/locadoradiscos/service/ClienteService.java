@@ -1,19 +1,17 @@
 package com.godev.locadoradiscos.service;
 
-import com.godev.locadoradiscos.exception.ClienteNotFoundException;
-import com.godev.locadoradiscos.exception.LocacaoNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.godev.locadoradiscos.dto.ClienteDto;
 import com.godev.locadoradiscos.dto.ConversorDto;
+import com.godev.locadoradiscos.exception.ClienteNotFoundException;
 import com.godev.locadoradiscos.modelo.Cliente;
 import com.godev.locadoradiscos.repository.ClienteRepository;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -35,52 +33,59 @@ public class ClienteService {
 		return conversorDto.toClienteDto(cliente);
 	}
 
-	public List<ClienteDto> getAll(){
+	public List<ClienteDto> getAll() {
 		List<Cliente> clientes = repository.findAll();
 		List<ClienteDto> clientesDto = new ArrayList<>();
 
-		for (int i = 0; i < clientes.size(); i++){
+		for (int i = 0; i < clientes.size(); i++) {
 			clientesDto.add(conversorDto.toClienteDto(clientes.get(i)));
 		}
 		return clientesDto;
 	}
 
-	public void delete(Long id) throws ClienteNotFoundException{
+	public void delete(Long id) throws ClienteNotFoundException {
 		final Optional<Cliente> cliente = repository.findById(id);
 
-		if(cliente.isPresent()){
+		if (cliente.isPresent()) {
 			repository.delete(cliente.get());
-		}else throw new ClienteNotFoundException();
+		} else {
+			throw new ClienteNotFoundException();
+		}
 	}
 
-
-	public ClienteDto getById(Long id) throws ClienteNotFoundException{
+	public ClienteDto getById(Long id) throws ClienteNotFoundException {
 		Optional<Cliente> cliente = repository.findById(id);
 
-		if(cliente.isPresent()){
+		if (cliente.isPresent()) {
 			return conversorDto.toClienteDto(cliente.get());
-		}else throw new ClienteNotFoundException();
- 	}
-
-	public void alterar(){
-
+		} else {
+			throw new ClienteNotFoundException();
+		}
 	}
-	
-	public List<ClienteDto> buscarNomeCliente(String nome){
-		List<Cliente> clientes = repository.findByName(nome);
+
+	public ClienteDto update(ClienteDto clienteDto) {
+		Cliente cliente = repository.save(conversorDto.toClienteEntity(clienteDto));
+		return conversorDto.toClienteDto(cliente);
+	}
+
+//
+	public List<ClienteDto> buscarClientesPorNome(String nome) {
+		List<Cliente> clientes = repository.findByNome(nome);
 		List<ClienteDto> clientesDto = new ArrayList<>();
-		
+
 		for (int i = 0; i < clientes.size(); i++) {
 			clientesDto.add(conversorDto.toClienteDto(clientes.get(i)));
 		}
-		return clientesDto;	
+		return clientesDto;
 	}
-	
-	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException{
-		Optional<Cliente> cliente = repository.findByCpf(cpf);
-		
-		if(cliente.isPresent()) {
-			return conversorDto.toClienteDto(cliente.get());
-		}else throw new ClienteNotFoundException();
-	}
+//
+//	public ClienteDto getByCpf(String cpf) throws ClienteNotFoundException {
+//		Optional<Cliente> cliente = repository.findByCpf(cpf);
+//
+//		if (cliente.isPresent()) {
+//			return conversorDto.toClienteDto(cliente.get());
+//		} else {
+//			throw new ClienteNotFoundException();
+//		}
+//	}
 }
