@@ -53,7 +53,7 @@ public class ClienteService {
 		}
 	}
 
-	public ClienteDto getById(Long id) throws ClienteNotFoundException {
+	public ClienteDto getById(Long id) {
 		Optional<Cliente> cliente = repository.findById(id);
 
 		if (cliente.isPresent()) {
