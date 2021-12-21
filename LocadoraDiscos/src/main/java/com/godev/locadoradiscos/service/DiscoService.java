@@ -13,6 +13,7 @@ import com.godev.locadoradiscos.exception.DiscoNotFoundException;
 import com.godev.locadoradiscos.modelo.Disco;
 import com.godev.locadoradiscos.repository.DiscoRepository;
 
+
 @Service
 public class DiscoService {
 
@@ -59,5 +60,11 @@ public class DiscoService {
 			throw new DiscoNotFoundException();
 		}
 	}
+
+//	public List<DiscoDto> buscarDiscoPeloTitulo(String titulo){
+//		List<Disco>
+//	}
+
+
 
 }
