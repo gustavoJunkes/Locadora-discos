@@ -11,9 +11,12 @@
   💿 Uso de QueryDSL na criação das querys;  <br>
   💿 Uso de Validations nos DTOs;
 </p>
+
  ## 
+ 
 <div align="center" style="display: inline_block">
   <h4>💻 Tecnologias, Ferramentas de desenvolvimento, DevOps e Utilidades 💻</h4>
+  
   ![Java](https://img.shields.io/badge/-Java-333333?style=flat&logo=java&logoColor=FFFFFFF)
   ![Spring](https://img.shields.io/badge/-Spring-333333?style=flat&logo=spring&logoColor=FFFFFFF)
   ![Maven](https://img.shields.io/badge/-Maven-333333?style=flat&logo=maven&logoColor=FFFFFFF)
@@ -23,6 +26,7 @@
   ![GitHub](https://img.shields.io/badge/-GitHub-333333?style=flat&logo=github)
   ![Postman](https://img.shields.io/badge/-Postman-333333?style=flat&logo=postman)
 </div>
+
 ##
 <div align="center" style="display: inline_block">
  <h4> 🤝 Colaboradores 🤝</h4>
