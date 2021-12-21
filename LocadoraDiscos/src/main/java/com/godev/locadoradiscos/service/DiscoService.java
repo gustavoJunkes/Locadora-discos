@@ -59,9 +59,23 @@ public class DiscoService {
 		}else throw new DiscoNotFoundException();
 	}
 	
-//	public List<DiscoDto> buscarDiscoPeloTitulo(String titulo){
-//		List<Disco>
-//	}
+	public List<DiscoDto> buscarDiscoPeloTitulo(String titulo){
+		List<Disco> discos = repository.findByTitulo(titulo);
+		List<DiscoDto> discosDto = new ArrayList<>();
+		
+		for (int i = 0; i < discos.size(); i++) {
+			discosDto.add(conversorDto.toDiscoDto(discos.get(i)));
+		}
+		return discosDto;
+	}
 
+	public DiscoDto getByAutor(String autor) throws DiscoNotFoundException{
+		Optional<Disco> disco = repository.findByAutor(autor);
+		
+		if(disco.isPresent()) {
+			return conversorDto.toDiscoDto(disco.get());
+		}
+		else throw new DiscoNotFoundException();
+	}
 
 }
