@@ -22,13 +22,6 @@ public class ClienteRepositoryCustomImpl implements ClienteRepositoryCustom {
 
 	public static final QCliente Q_CLIENTE = QCliente.cliente;
 
-//	private JPAQueryFactory _buildQueryFactory() {
-//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.godev.locadoradiscos");
-//		EntityManager em = emf.createEntityManager();
-//		JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-//
-//		return queryFactory;
-//	}
 
 	@Override
 	public List<Cliente> buscarTodosClientes() {
