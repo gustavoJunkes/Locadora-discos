@@ -16,7 +16,7 @@ import com.godev.locadoradiscos.repository.custom.ClienteRespositoryCustom;
 public interface ClienteRepository extends JpaRepository<Cliente, Long>, ClienteRespositoryCustom {
 
 	@Transactional
-	Cliente findByCpf (String cpf);
+	Optional<Cliente> findByCpf (String cpf);
 
 	@Transactional
 	Optional<Cliente> findById (Long id);

@@ -54,9 +54,15 @@ public class DiscoController {
 
     @PostMapping
     public ResponseEntity<DiscoDto> save(@RequestBody DiscoDto discoDto){
-        return new ResponseEntity<> (discoService.save(discoDto), HttpStatus.OK);
+        return new ResponseEntity<> (discoService.save(discoDto),HttpStatus.OK);
     }
 
-    //adicionar método update.
-
+    @GetMapping
+    public ResponseEntity<DiscoDto> buscarDiscoPeloTitulo(@Param("titulo") String titulo){
+    	DiscoDto disco = new DiscoDto();
+    	return new ResponseEntity<DiscoDto>(disco, HttpStatus.OK);
+    }
+    
+    
+    
 }
