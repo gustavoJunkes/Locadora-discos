@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.godev.locadoradiscos.modelo.Cliente;
 
-public interface ClienteRespositoryCustom {
+public interface ClienteRepositoryCustom {
 
 	List<Cliente> buscarTodosClientes();
 
-	Cliente buscarClientePorNome(String nome);
+	List<Cliente> buscarClientePorNome(String nome);
 
 }

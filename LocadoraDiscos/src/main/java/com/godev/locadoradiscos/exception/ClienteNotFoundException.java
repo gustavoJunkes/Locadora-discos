@@ -1,7 +1,10 @@
 package com.godev.locadoradiscos.exception;
 
-import ch.qos.logback.core.net.server.Client;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class ClienteNotFoundException extends Exception{
-    public ClienteNotFoundException(){}
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Nenhum cliente foi encontrado")
+public class ClienteNotFoundException extends Exception {
+	public ClienteNotFoundException() {
+	}
 }

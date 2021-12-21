@@ -1,7 +1,9 @@
 package com.godev.locadoradiscos.exception;
 
-import ch.qos.logback.core.net.server.Client;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class LocacaoNotFoundException extends Exception{
-    public LocacaoNotFoundException(){}
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Nenhuma locação foi encontrada")
+public class LocacaoNotFoundException extends Exception {
+
 }

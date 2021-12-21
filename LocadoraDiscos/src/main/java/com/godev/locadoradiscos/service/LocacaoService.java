@@ -34,7 +34,7 @@ public class LocacaoService {
 	}
 
 	public List<LocacaoDto> getAll() {
-		List<Locacao> locacoes = locacaoRepository.findAll();
+		List<Locacao> locacoes = locacaoRepository.buscarTodasLocacoesDsl();
 		List<LocacaoDto> locacaoesDto = new ArrayList<>();
 
 		for (int i = 0; i < locacoes.size(); i++) {
