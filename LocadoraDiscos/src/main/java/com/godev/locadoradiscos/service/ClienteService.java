@@ -81,6 +81,7 @@ public class ClienteService {
 		
 		if(cliente.isPresent()) {
 			return conversorDto.toClienteDto(cliente.get());
-		}else throw new ClienteNotFoundException();
+		}
+		else throw new ClienteNotFoundException();
 	}
 }
