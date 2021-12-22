@@ -67,4 +67,10 @@ public class LocacaoController {
 		Double locacoes = locacaoService.maiorPrecoLocacao();
 		return locacoes;
 	}
+	
+	@GetMapping(value = "/precomin")
+	public Double menorPrecoDisco(@RequestParam("preco")Double preco) {
+		Double locacoes = locacaoService.menorPrecoLocacao();
+		return locacoes;
+	}
 }
