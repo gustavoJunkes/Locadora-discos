@@ -92,4 +92,9 @@ public class LocacaoService {
 		Double precoMaior = locacaoRepository.maiorPrecoLocacao();
 		return precoMaior;
 	}
+	
+	public Double menorPrecoLocacao() {
+		Double precoMenor = locacaoRepository.menorPrecoLocacao();
+		return precoMenor;
+	}
 }
